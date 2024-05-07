@@ -4,9 +4,9 @@ metadata:
   name: predictive-ai-pipeline-mm # executable id, must be unique across all your workflows (YAML files), please modify this to any value (e.g. code-pipeline-12345) if you are not the only user of your SAP AI Core instance.
   annotations:
     scenarios.ai.sap.com/description: "Tutorial to add custom code to SAP AI Core"
-    scenarios.ai.sap.com/name: "Code (Tutorial)"
+    scenarios.ai.sap.com/name: "Code (Tutorial) mm"
     executables.ai.sap.com/description: "Trains model on median house prices"
-    executables.ai.sap.com/name: "House Price (Sklearn Example)"
+    executables.ai.sap.com/name: "House Price (Sklearn Example) - mm"
   labels:
     scenarios.ai.sap.com/id: "learning-code"
     ai.sap.com/version: "1.0"
