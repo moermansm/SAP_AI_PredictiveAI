@@ -9,7 +9,7 @@ metadata:
     executables.ai.sap.com/name: "House Price (Sklearn Example) - mm"
   labels:
     scenarios.ai.sap.com/id: "learning-code"
-    ai.sap.com/version: "2.0"
+    ai.sap.com/version: "3.0"
 spec:
   imagePullSecrets:
     - name: mm-credentials-docker # your docker registry secret
@@ -22,7 +22,7 @@ spec:
 
   - name: mycodeblock1
     container:
-      image: docker.io/moermansm/house-price:testmm # Your docker image name
+      image: docker.io/moermansm/house-price-pred:01 # Your docker image name
       command: ["/bin/sh", "-c"]
       args:
         - "python /app/src/main.py"
