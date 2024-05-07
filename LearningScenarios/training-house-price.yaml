@@ -23,7 +23,7 @@ spec:
   - name: mycodeblock1
     inputs:
       artifacts:  # placeholder for cloud storage attachements
-        - name: housedataset # a name for the placeholder
+        - name: housedataset-mm # a name for the placeholder
           path: /app/data/ # where to copy in the Dataset in the Docker image
     container:
       image: docker.io/moermansm/house-price-pred:02 # Your docker image name
