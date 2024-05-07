@@ -15,6 +15,9 @@ spec:
   imagePullSecrets:
     - name: mm-credentials-docker # your docker registry secret
   entrypoint: mypipeline
+  arguments:
+    parameters: # placeholder for string like inputs
+        - name: DT_MAX_DEPTH # identifier local to this workflow
   templates:
   - name: mypipeline
     steps:
@@ -30,6 +33,6 @@ spec:
       command: ["/bin/sh", "-c"]
       env:
         - name: DT_MAX_DEPTH # name of the environment variable inside Docker container
-          value: "3" # will make it as variable later
+          value: "{{workflow.parameters.DT_MAX_DEPTH}}" # value to set from local (to workflow) variable DT_MAX_DEPTH
       args:
         - "python /app/src/main.py"
