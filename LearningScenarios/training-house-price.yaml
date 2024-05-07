@@ -6,7 +6,7 @@ metadata:
     scenarios.ai.sap.com/description: "Learning how to ingest data to workflows"
     scenarios.ai.sap.com/name: "House Price (Tutorial) - mm" # Scenario name should be the use case
     executables.ai.sap.com/description: "Train with live data"
-    executables.ai.sap.com/name: "training" mm # Executable name should describe the workflow in the use case
+    executables.ai.sap.com/name: "training mm" # Executable name should describe the workflow in the use case
     artifacts.ai.sap.com/housedataset.kind: "dataset" # Helps in suggesting the kind of inputs that can be attached.
   labels:
     scenarios.ai.sap.com/id: "learning-datalines"
