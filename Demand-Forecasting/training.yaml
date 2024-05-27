@@ -7,6 +7,8 @@ metadata:
     scenarios.ai.sap.com/name: "Training"
     executables.ai.sap.com/description: "Train the demand forecasting model"
     executables.ai.sap.com/name: "demand forecasting training"
+    artifacts.ai.sap.com/train-dataset.kind: "dataset" # Helps in suggesting the kind of artifact that can be attached.
+    artifacts.ai.sap.com/forecastingmodel.kind: "model" # Helps in suggesting the kind of artifact that can be generated.
   labels:
     scenarios.ai.sap.com/id: "Training"
     ai.sap.com/version: "2.0"
