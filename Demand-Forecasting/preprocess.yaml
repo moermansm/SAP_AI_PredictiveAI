@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: demand-forecasting-preprocessing
+  annotations:
+    scenarios.ai.sap.com/description: "Preprocessing for Demand Forecasting"
+    scenarios.ai.sap.com/name: "Preprocessing"
+    executables.ai.sap.com/description: "Preprocess the demand forecasting data"
+    executables.ai.sap.com/name: "demand forecasting preprocessing"
+    artifacts.ai.sap.com/trainingdata.kind: "dataset"
+    artifacts.ai.sap.com/calendardata.kind: "dataset"
+  labels:
+    scenarios.ai.sap.com/id: "Preprocessing"
+    ai.sap.com/version: "1.0"
+spec:
+  imagePullSecrets:
+    - name: mm-credentials-docker
+  entrypoint: preprocessing
+  templates:
+  - name: preprocessing
+    steps:
+    - - name: preprocessing-step
+        template: preprocess
+  - name: preprocess
+    inputs:
+      artifacts:
+        - name: trainingdata
+          path: /app/data/
+        - name: calendardata
+          path: /app/data/
+    outputs:
+      artifacts:
+        - name: preprocesseddata
+          path: /app/data/
+    container:
+      image: docker.io/moermansm/demand-forecasting:05
+      command: ["/bin/sh", "-c"]
+      args:
+        - "python /app/src/preprocess.py"
