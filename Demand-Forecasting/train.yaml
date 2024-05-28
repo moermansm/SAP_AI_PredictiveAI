@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: demand-forecasting-training
+  annotations:
+    scenarios.ai.sap.com/description: "Training for Demand Forecasting"
+    scenarios.ai.sap.com/name: "Training"
+    executables.ai.sap.com/description: "Train the demand forecasting model"
+    executables.ai.sap.com/name: "demand forecasting training"
+    artifacts.ai.sap.com/preprocesseddata.kind: "dataset"
+    artifacts.ai.sap.com/forecastingmodel.kind: "model"
+  labels:
+    scenarios.ai.sap.com/id: "Training"
+    ai.sap.com/version: "1.0"
+spec:
+  imagePullSecrets:
+    - name: mm-credentials-docker
+  entrypoint: training
+  templates:
+  - name: training
+    steps:
+    - - name: training-step
+        template: train
+  - name: train
+    inputs:
+      artifacts:
+        - name: preprocesseddata
+          path: /app/data/
+    outputs:
+      artifacts:
+        - name: forecastingmodel
+          path: /app/model/
+    container:
+      image: docker.io/moermansm/demand-forecasting:05
+      command: ["/bin/sh", "-c"]
+      args:
+        - "python /app/src/train.py"
