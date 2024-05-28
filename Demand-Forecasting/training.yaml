@@ -8,7 +8,6 @@ metadata:
     executables.ai.sap.com/description: "Train the demand forecasting model"
     executables.ai.sap.com/name: "demand forecasting training"
     artifacts.ai.sap.com/trainingdata.kind: "dataset" # Helps in suggesting the kind of artifact that can be attached.
-    artifacts.ai.sap.com/calendardata.kind: "dataset" # Helps in suggesting the kind of artifact that can be attached.
     artifacts.ai.sap.com/forecastingmodel.kind: "model" # Helps in suggesting the kind of artifact that can be generated.
   labels:
     scenarios.ai.sap.com/id: "Training"
@@ -26,8 +25,6 @@ spec:
     inputs:
       artifacts:  # placeholder for cloud storage attachements
         - name: trainingdata # a name for the placeholder
-          path: /app/data/ # where to copy in the Dataset in the Docker image
-        - name: calendardata # a name for the placeholder
           path: /app/data/ # where to copy in the Dataset in the Docker image
     outputs:
       artifacts:
