@@ -30,8 +30,11 @@ spec:
           path: /app/data/calendar/ # Changed path to avoid conflicts
     outputs:
       artifacts:
-        - name: preprocesseddata
-          path: /app/data/preprocessed/ # Changed path to avoid conflicts
+        - name: demand_forecasting_preprocessed_data
+          globalName: demand_forecasting_preprocessed_data
+          path: /app/data/preprocessed/
+          archive:
+            none: {}
     container:
       image: docker.io/moermansm/demand-forecasting:latest
       command: ["/bin/sh", "-c"]
