@@ -11,7 +11,7 @@ metadata:
     artifacts.ai.sap.com/forecastingmodel.kind: "model" # Helps in suggesting the kind of artifact that can be generated.
   labels:
     scenarios.ai.sap.com/id: "Training"
-    ai.sap.com/version: "3.0"
+    ai.sap.com/version: "4.0"
 spec:
   imagePullSecrets:
     - name: mm-credentials-docker # your docker registry secret
