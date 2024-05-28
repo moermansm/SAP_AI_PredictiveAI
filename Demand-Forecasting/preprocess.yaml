@@ -39,4 +39,5 @@ spec:
       image: docker.io/moermansm/demand-forecasting:latest
       command: ["/bin/sh", "-c"]
       args:
-        - "python /app/src/preprocess.py"
+          - >
+            set -e && echo "---Start Preprocessing---" && python /app/src/preprocessing.py && ls -lR /app/dataoutput && echo "---End Preprocessing---"  
