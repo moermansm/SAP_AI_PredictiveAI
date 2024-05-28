@@ -25,13 +25,13 @@ spec:
     inputs:
       artifacts:
         - name: trainingdata
-          path: /app/data/
+          path: /app/data/training/ # Changed path to avoid conflicts
         - name: calendardata
-          path: /app/data/
+          path: /app/data/calendar/ # Changed path to avoid conflicts
     outputs:
       artifacts:
         - name: preprocesseddata
-          path: /app/data/
+          path: /app/data/preprocessed/ # Changed path to avoid conflicts
     container:
       image: docker.io/moermansm/demand-forecasting:05
       command: ["/bin/sh", "-c"]
