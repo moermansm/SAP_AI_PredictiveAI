@@ -33,7 +33,7 @@ spec:
         - name: preprocesseddata
           path: /app/data/preprocessed/ # Changed path to avoid conflicts
     container:
-      image: docker.io/moermansm/demand-forecasting:05
+      image: docker.io/moermansm/demand-forecasting:latest
       command: ["/bin/sh", "-c"]
       args:
         - "python /app/src/preprocess.py"
