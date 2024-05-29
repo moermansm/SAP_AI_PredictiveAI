@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: training-pipeline-demand-forecasting # executable id, must be unique across all your workflows (YAML files)
+  annotations:
+    scenarios.ai.sap.com/description: "Training pipeline for Demand Forecasting"
+    scenarios.ai.sap.com/name: "Training Pipleine"
+    executables.ai.sap.com/description: "Train pipeline for the demand forecasting model"
+    executables.ai.sap.com/name: "demand forecasting training pipeline"
+    artifacts.ai.sap.com/preprocesseddata.kind: "dataset"
+    artifacts.ai.sap.com/forecastingmodel.kind: "model"
+  labels:
+    scenarios.ai.sap.com/id: "training-demand-forecasting"
+    ai.sap.com/version: "1.0"
+spec:
+  imagePullSecrets:
+    - name: mm-credentials-docker
+  entrypoint: training
+  templates:
+  - name: training
+    steps:
+    - - name: training-step
+        template: train
+  - name: train
+    inputs:
+      artifacts:
+        - name: preprocesseddata
+          path: /app/data/
+    outputs:
+      artifacts:
+        - name: forecastingmodel
+          path: /app/model/
+    container:
+      image: docker.io/moermansm/demand-forecasting:latest
+      command: ["/bin/sh", "-c"]
+      args:
+        - "python /app/src/main.py"
