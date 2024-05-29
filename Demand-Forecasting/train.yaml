@@ -31,7 +31,7 @@ spec:
         - name: forecastingmodel
           path: /app/model/
     container:
-      image: docker.io/moermansm/demand-forecasting:latest
+      image: docker.io/moermansm/demand-forecasting:07
       imagePullPolicy: Always
       command: ["/bin/sh", "-c"]
       args:
