@@ -4,7 +4,7 @@ metadata:
   name: training-pipeline-demand-forecasting # executable id, must be unique across all your workflows (YAML files)
   annotations:
     scenarios.ai.sap.com/description: "Training pipeline for Demand Forecasting"
-    scenarios.ai.sap.com/name: "Training Pipleine"
+    scenarios.ai.sap.com/name: "Training Pipeline"
     executables.ai.sap.com/description: "Train pipeline for the demand forecasting model"
     executables.ai.sap.com/name: "demand forecasting training pipeline"
     artifacts.ai.sap.com/preprocesseddata.kind: "dataset"
