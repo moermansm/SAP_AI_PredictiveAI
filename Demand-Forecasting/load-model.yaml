@@ -11,7 +11,7 @@ metadata:
     artifacts.ai.sap.com/forecastmodel.kind: "model" # Helps in suggesting the kind of artifact that can be generated.
   labels:
     scenarios.ai.sap.com/id: "load-model"
-    ai.sap.com/version: "1.0"
+    ai.sap.com/version: "2.0"
 spec:
   imagePullSecrets:
     - name: mm-credentials-docker # your docker registry secret
@@ -38,4 +38,4 @@ spec:
       image: docker.io/moermansm/demand-forecasting-pipeline:02
       command: ["/bin/sh", "-c"]
       args:
-        - "python /app/src/load-model.py"
+        - "mkdir -p /app/model && python /app/src/load-model.py"
