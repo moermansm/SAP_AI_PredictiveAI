@@ -11,7 +11,7 @@ metadata:
     artifacts.ai.sap.com/forecastingmodel.kind: "model"
   labels:
     scenarios.ai.sap.com/id: "training-demand-forecasting"
-    ai.sap.com/version: "2.0"
+    ai.sap.com/version: "3.0"
 spec:
   imagePullSecrets:
     - name: mm-credentials-docker
@@ -36,4 +36,4 @@ spec:
       command: ["/bin/sh", "-c"]
       args:
         - >
-            set -e && echo "---Start Training---" && python /app/src/train_scikit.py && ls -lR /app/model && echo "---End Training---"
+            set -e && echo "---Start Training---" && python /app/src/main.py && ls -lR /app/model && echo "---End Training---"
