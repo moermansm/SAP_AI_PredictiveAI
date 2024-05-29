@@ -1,0 +1,7 @@
+ai_core_sdk
+datasetsforecast
+hierarchicalforecast
+numpy
+pandas
+scikit_learn
+statsforecast
