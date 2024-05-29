@@ -4,7 +4,7 @@ metadata:
   name: load-demand-forecasting-model # executable id, must be unique across all your workflows (YAML files)
   annotations:
     scenarios.ai.sap.com/description: "loading demand forecasting model"
-    scenarios.ai.sap.com/name: "House Price (Tutorial)" # Scenario name should be the use case
+    scenarios.ai.sap.com/name: "load-model" # Scenario name should be the use case
     executables.ai.sap.com/description: "Generate metrics"
     executables.ai.sap.com/name: "load-model" # Executable name should describe the workflow in the use case
     artifacts.ai.sap.com/inputmodel.kind: "model" # Helps in suggesting the kind of artifact that can be generated.
