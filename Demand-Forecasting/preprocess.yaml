@@ -11,7 +11,7 @@ metadata:
     artifacts.ai.sap.com/calendardata.kind: "dataset"
   labels:
     scenarios.ai.sap.com/id: "Preprocessing"
-    ai.sap.com/version: "5.0"
+    ai.sap.com/version: "6.0"
 spec:
   imagePullSecrets:
     - name: mm-credentials-docker
