@@ -9,6 +9,7 @@ metadata:
     executables.ai.sap.com/name: "demand forecasting preprocessing"
     artifacts.ai.sap.com/trainingdata.kind: "dataset"
     artifacts.ai.sap.com/calendardata.kind: "dataset"
+    artifacts.ai.sap.com/preprocessed_data.kind: "dataset"
   labels:
     scenarios.ai.sap.com/id: "Preprocessing"
     ai.sap.com/version: "6.0"
@@ -30,7 +31,7 @@ spec:
           path: /app/data/calendar/ # Changed path to avoid conflicts
     outputs:
       artifacts:
-        - name: demand_forecasting_preprocessed_data
+        - name: preprocessed_data
           globalName: demand_forecasting_preprocessed_data
           path: /app/data/preprocessed/
           archive:
