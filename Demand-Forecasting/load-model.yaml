@@ -35,7 +35,7 @@ spec:
             none:   # specify not to compress while uploading to cloud
               {}
     container:
-      image: docker.io/moermansm/demand-forecasting-pipeline:02
+      image: docker.io/moermansm/demand-forecasting-pipeline:03
       command: ["/bin/sh", "-c"]
       args:
         - "python /app/src/load-model.py"
