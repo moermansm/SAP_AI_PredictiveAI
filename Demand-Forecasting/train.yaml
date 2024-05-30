@@ -11,15 +11,17 @@ metadata:
     artifacts.ai.sap.com/forecastingmodel.kind: "model"
   labels:
     scenarios.ai.sap.com/id: "Training"
-    ai.sap.com/version: "3.0"
+    ai.sap.com/version: "4.0"
 spec:
   imagePullSecrets:
     - name: mm-credentials-docker
   entrypoint: training
+    parameters: # placeholder for string like inputs
+        - name: SEASONALITY # identifier local to this workflow
   templates:
   - name: training
     steps:
-    - - name: training-step
+      - name: training-step
         template: train
   - name: train
     inputs:
@@ -29,11 +31,14 @@ spec:
     outputs:
       artifacts:
         - name: forecastingmodel
+          globalName: forecastingmodel # local identifier name to the workflow, also used above in annotation
           path: /app/model/
     container:
       image: docker.io/moermansm/demand-forecasting-pipeline:02
-      imagePullPolicy: Always
       command: ["/bin/sh", "-c"]
+      env:
+        - name : SEASONALITY
+          value : "{{workflow.parameters.DT_MAX_DEPTH}}"
       args:
         - >
             set -e && echo "---Start Training---" && python /app/src/train.py && ls -lR /app/model && echo "---End Training---"
