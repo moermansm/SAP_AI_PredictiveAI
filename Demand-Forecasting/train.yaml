@@ -17,7 +17,7 @@ spec:
     - name: mm-credentials-docker
   entrypoint: training
     parameters: # placeholder for string like inputs
-        - name: SEASONALITY # identifier local to this workflow
+        - name: SEASON_LENGTH # identifier local to this workflow
   templates:
   - name: training
     steps:
@@ -37,7 +37,7 @@ spec:
       image: docker.io/moermansm/demand-forecasting-pipeline:02
       command: ["/bin/sh", "-c"]
       env:
-        - name : SEASONALITY
+        - name : SEASON_LENGTH
           value : "{{workflow.parameters.DT_MAX_DEPTH}}"
       args:
         - >
