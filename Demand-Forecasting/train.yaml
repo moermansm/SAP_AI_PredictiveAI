@@ -34,7 +34,7 @@ spec:
           globalName: forecastingmodel # local identifier name to the workflow, also used above in annotation
           path: /app/model/
     container:
-      image: docker.io/moermansm/demand-forecasting-pipeline:02
+      image: docker.io/moermansm/demand-forecasting-pipeline:03
       command: ["/bin/sh", "-c"]
       env:
         - name : SEASON_LENGTH
