@@ -38,7 +38,7 @@ spec:
       command: ["/bin/sh", "-c"]
       env:
         - name : SEASON_LENGTH
-          value : "{{workflow.parameters.DT_MAX_DEPTH}}"
+          value : "{{workflow.parameters.SEASON_LENGTH}}"
       args:
         - >
             set -e && echo "---Start Training---" && python /app/src/train.py && ls -lR /app/model && echo "---End Training---"
