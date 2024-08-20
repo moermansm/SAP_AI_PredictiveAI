@@ -1,0 +1,39 @@
+apiVersion: ai.sap.com/v1alpha1
+kind: ServingTemplate
+metadata:
+  name: rag-qa-model-serving
+  annotations:
+    scenarios.ai.sap.com/description: "RAG-based Q&A Model"
+    scenarios.ai.sap.com/name: "rag-qa"
+    executables.ai.sap.com/description: "RAG Q&A Model Deployment"
+    executables.ai.sap.com/name: "rag-qa"
+  labels:
+    scenarios.ai.sap.com/id: "rag-qa"
+    ai.sap.com/version: "1.0"
+spec:
+  template:
+    apiVersion: "serving.kserve.io/v1beta1"
+    metadata:
+      annotations: |
+        autoscaling.knative.dev/metric: concurrency
+        autoscaling.knative.dev/target: 1
+        autoscaling.knative.dev/targetBurstCapacity: 0
+      labels: |
+        ai.sap.com/resourcePlan: infer.s
+    spec: |
+      predictor:
+        imagePullSecrets:
+          - name: mm-credentials-docker  # Secret for pulling images from a private registry
+        minReplicas: 1
+        maxReplicas: 3
+        containers:
+        - name: kserve-container
+          image: docker.io/moermansm/rag-deployment:01  # Replace with your Docker image
+          ports:
+            - containerPort: 9001  # Update to match the port in your Flask app
+              protocol: TCP
+          command: ["/bin/sh", "-c"]
+          args:
+            - >
+              set -e && echo "Starting" && gunicorn --chdir /app/src main:app -b 0.0.0.0:9001 # filename `main` flask variable `app`
+        
